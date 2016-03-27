@@ -4,7 +4,7 @@
   "description": "Testing Twitter API using ReactJ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "lukasz pietraszek",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
     "gulp": "^3.9.0",
+    "jest-cli": "^0.4.18",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
