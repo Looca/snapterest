@@ -3,24 +3,37 @@
   "version": "1.0.0",
   "description": "Testing Twitter API using ReactJ",
   "main": "index.js",
+  "author": "Lukasz Pietraszek",
+  "license": "ISC",
+  "babel": {
+    "presets": ["react"]
+  },
+  "dependencies": {
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "snapkite-stream-client": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-jest": "^6.0.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "jest-cli": "^0.8.2",
+    "vinyl-source-stream": "^1.1.0",
+    "react-addons-test-utils": "~0.14.0"
+  },
   "scripts": {
     "test": "jest"
   },
-  "author": "lukasz pietraszek",
-  "license": "ISC",
-  "keywords": [
-    "snapkite"
-  ],
-  "devDependencies": {
-    "babelify": "^6.2.0",
-    "browserify": "^11.0.1",
-    "gulp": "^3.9.0",
-    "jest-cli": "^0.4.18",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "react": "^0.14.0-beta3",
-    "react-dom": "^0.14.0-beta3",
-    "snapkite-stream-client": "^1.0.3"
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ]
   }
 }
