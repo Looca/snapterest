@@ -2,13 +2,17 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Header = require('./Header.react');
 var Button = require('./Button.react');
+var CollectionActionCreators = require('../actions/CollectionActionCreators');
+var CollectionStore = require('../stores/CollectionStore');
+
 var inputStyle = {
   marginRight: '5px'
 };
+
 var CollectionRenameForm = React.createClass({
   getInitialState: function() {
     return {
-      inputValue: this.props.name
+      inputValue: CollectionStore.getCollectionName()
     };
   },
   setInputValue: function (inputValue) {
@@ -23,13 +27,13 @@ var CollectionRenameForm = React.createClass({
   handleFormSubmit: function (event) {
     event.preventDefault();
     var collectionName = this.state.inputValue;
-    this.props.onChangeCollectionName(collectionName);
+    CollectionActionCreators.setCollectionName(collectionName);
+    this.props.onCancelCollectionNameChange();
   },
   handleFormCancel: function (event) {
     event.preventDefault();
-    var collectionName = this.props.name;
-    this.setInputValue(collectionName);
-    this.props.onCancelCollectionNameChange();
+    var collectionName = CollectionStore.getCollectionName();
+    this.setInputValue(collectionName); this.props.onCancelCollectionNameChange();
   },
   componentDidMount: function () {
     this.refs.collectionName.focus();
@@ -44,6 +48,9 @@ var CollectionRenameForm = React.createClass({
       <Button label="Change" handleClick={this.handleFormSubmit} />
       <Button label="Cancel" handleClick={this.handleFormCancel} />
       </form>
-    ); }
-  });
-  module.exports = CollectionRenameForm;
+    );
+  }
+});
+
+
+module.exports = CollectionRenameForm;
